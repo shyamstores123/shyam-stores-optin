@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shyam Stores – Opt‑In for WhatsApp, RCS & SMS</title>
+  <meta name="description" content="Give consent to receive updates via WhatsApp, RCS and SMS from Shyam Stores. Change preferences anytime." />
+  <style>
+    :root{
+      --bg:#0b1020; --card:#ffffff; --muted:#6b7280; --text:#0f172a; --brand:#1c64f2; --brand-2:#16a34a; --ring:#93c5fd;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,"Noto Sans",sans-serif;background:radial-gradient(1200px 600px at 100% -100%,#12213b,transparent) fixed,var(--bg);color:var(--text);}
+    .wrap{min-height:100%;display:grid;place-items:center;padding:32px}
+    .card{width:100%;max-width:720px;background:var(--card);border-radius:24px;box-shadow:0 10px 30px rgb(0 0 0 / 12%);padding:28px;}
+    .header{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+    .logo{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--brand-2));}
+    h1{font-size:1.6rem;line-height:1.2;margin:0}
+    p.lead{color:var(--muted);margin:6px 0 18px}
+    form{display:grid;gap:16px}
+    .grid{display:grid;gap:12px}
+    @media(min-width:720px){.grid-2{grid-template-columns:1fr 1fr}}
+    label{font-weight:600;font-size:.92rem}
+    input,select,button,textarea{font:inherit}
+    .field{display:grid;gap:6px}
+    .control{display:flex;gap:8px}
+    .input, .select, .textarea{width:100%;border:1.5px solid #e5e7eb;border-radius:12px;padding:12px 14px;transition:border-color .2s, box-shadow .2s}
+    .input:focus, .select:focus, .textarea:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 4px var(--ring)}
+    .hint{font-size:.86rem;color:var(--muted)}
+    .channels{display:grid;gap:12px}
+    .channel{border:1.5px solid #e5e7eb;border-radius:14px;padding:14px}
+    .channel-title{display:flex;align-items:center;gap:8px;font-weight:700}
+    .badge{font-size:.75rem;background:#eef2ff;color:#3730a3;border-radius:999px;padding:2px 8px}
+    .consent{margin-top:8px}
+    .consent p{margin:6px 0;color:#374151;font-size:.92rem}
+    .consent a{color:#1d4ed8;text-decoration:none}
+    .consent a:hover{text-decoration:underline}
+    .row{display:flex;gap:10px;align-items:flex-start}
+    .check{width:1.1rem;height:1.1rem;margin-top:2px}
+    .actions{display:flex;gap:12px;align-items:center}
+    .btn{appearance:none;border:0;border-radius:14px;padding:12px 18px;font-weight:700;cursor:pointer}
+    .btn-primary{background:linear-gradient(135deg,var(--brand),#3b82f6);color:#fff}
+    .btn-secondary{background:#f3f4f6;color:#111827}
+    .note{font-size:.85rem;color:var(--muted)}
+    .success, .error{display:none;border-radius:12px;padding:12px 14px}
+    .success{background:#ecfdf5;color:#065f46;border:1px solid #a7f3d0}
+    .error{background:#fef2f2;color:#991b1b;border:1px solid #fecaca}
+    footer{margin-top:10px;color:#6b7280;font-size:.82rem}
+    footer a{color:#1d4ed8;text-decoration:none}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card" role="region" aria-label="Opt‑in form">
+      <div class="header">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <h1>Shyam Stores</h1>
+          <p class="lead">Choose how you’d like to hear from us. You can change your preferences anytime.</p>
+        </div>
+      </div>
+      <form id="optinForm" novalidate>
+        <div class="grid grid-2">
+          <div class="field">
+            <label for="fullName">Full name</label>
+            <input id="fullName" name="fullName" class="input" autocomplete="name" placeholder="e.g., Raghav Agarwal" required />
+            <small class="hint">So we can personalize your messages.</small>
+          </div>
+          <div class="field">
+            <label for="email">Email (optional)</label>
+            <input id="email" name="email" type="email" class="input" autocomplete="email" placeholder="you@example.com" />
+            <small class="hint">Used only for order updates and receipts.</small>
+          </div>
+        </div>
+        <div class="grid grid-2">
+          <div class="field">
+            <label for="country">Country</label>
+            <select id="country" name="country" class="select">
+              <option value="IN" selected>India (+91)</option>
+              <option value="US">United States (+1)</option>
+              <option value="GB">United Kingdom (+44)</option>
+              <option value="AE">United Arab Emirates (+971)</option>
+              <option value="SG">Singapore (+65)</option>
+              <option value="AU">Australia (+61)</option>
+              <option value="DE">Germany (+49)</option>
+              <option value="FR">France (+33)</option>
+              <option value="ZA">South Africa (+27)</option>
+              <option value="BR">Brazil (+55)</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="phone">Mobile number</label>
+            <input id="phone" name="phone" class="input" inputmode="numeric" autocomplete="tel" placeholder="10‑digit mobile" required />
+            <small class="hint">We’ll format your number automatically (E.164).</small>
+          </div>
+        </div>
+        <div class="channels">
+          <div class="channel">
+            <div class="channel-title">WhatsApp <span class="badge">Recommended</span></div>
+            <div class="consent">
+              <div class="row">
+                <input id="waOpt" name="waOpt" type="checkbox" class="check" />
+                <label for="waOpt" class="hint">
+                  I agree to receive transactional and promotional messages on WhatsApp from <strong>Shyam Stores</strong>. I understand consent isn’t a condition of purchase. Message frequency varies. Standard data rates apply. Reply <strong>STOP</strong> to opt out.
+                </label>
+              </div>
+              <p class="hint">By opting in, you also agree to WhatsApp’s <a href="#" target="_blank" rel="noopener">Terms</a> and <a href="#" target="_blank" rel="noopener">Privacy Policy</a>.</p>
+            </div>
+          </div>
+          <div class="channel">
+            <div class="channel-title">RCS (Google/Carrier Messages)</div>
+            <div class="consent">
+              <div class="row">
+                <input id="rcsOpt" name="rcsOpt" type="checkbox" class="check" />
+                <label for="rcsOpt" class="hint">
+                  I agree to receive RCS business messages on compatible devices. Features depend on my carrier/device. Reply <strong>STOP</strong> to opt out.
+                </label>
+              </div>
+              <p class="hint">RCS is supported by many Android devices through Google/Carrier services. Data charges may apply.</p>
+            </div>
+          </div>
+          <div class="channel">
+            <div class="channel-title">SMS/Text</div>
+            <div class="consent">
+              <div class="row">
+                <input id="smsOpt" name="smsOpt" type="checkbox" class="check" />
+                <label for="smsOpt" class="hint">
+                  I agree to receive SMS texts from <strong>Shyam Stores</strong>. Message and data rates may apply. Message frequency varies. Reply <strong>STOP</strong> to opt out; <strong>HELP</strong> for help.
+                </label>
+              </div>
+              <p class="hint">India: As per TRAI, you may receive texts from our registered Sender ID/PE ID.</p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <input id="terms" name="terms" type="checkbox" class="check" required />
+          <label for="terms" class="hint">I am 18+ and accept the <a href="#" target="_blank" rel="noopener">Privacy Policy</a> & <a href="#" target="_blank" rel="noopener">Terms</a>. I can revoke consent anytime.</label>
+        </div>
+        <div class="actions">
+          <button type="submit" class="btn btn-primary">Submit preferences</button>
+          <button type="button" id="btnReset" class="btn btn-secondary" aria-label="Reset form">Reset</button>
+        </div>
+        <div class="note">We’ll only contact you on the channels you’ve selected.</div>
+        <div id="success" class="success" role="status">✅ Thanks! Your preferences are saved. Check your phone for a confirmation.</div>
+        <div id="error" class="error" role="alert">⚠️ Something went wrong. Please try again or contact support.</div>
+        <input type="hidden" id="utm_source" name="utm_source" />
+        <input type="hidden" id="utm_medium" name="utm_medium" />
+        <input type="hidden" id="utm_campaign" name="utm_campaign" />
+        <input type="hidden" id="source_url" name="source_url" />
+      </form>
+      <footer>
+        Prefer fewer messages? You can update preferences any time via the <a href="#" aria-label="Manage preferences">Manage Preferences</a> link in our messages.
+      </footer>
+    </div>
+  </div>
+</body>
+</html>
